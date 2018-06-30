@@ -10,8 +10,15 @@ import android.widget.EditText;
 import android.content.Intent;
 import android.widget.TextView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ReceiveMessageActivity extends AppCompatActivity {
+
     public static final String EXTRA_MESSAGE = "message";
+
+    @BindView(R.id.message)
+    TextView messageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +26,7 @@ public class ReceiveMessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_receive_message);
         Intent intent = getIntent();
         String messageText = intent.getStringExtra(EXTRA_MESSAGE);
-        TextView messageView = (TextView) findViewById(R.id.message);
         messageView.setText(messageText);
+        ButterKnife.bind(this);
     }
-
 }
